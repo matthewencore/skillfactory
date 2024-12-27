@@ -14,7 +14,7 @@ public class MainClass {
     @GetMapping(path = "/")
     ResponseEntity<Map<String,String>> mainController(){
         Map<String,String> stringMap = new HashMap<>();
-        stringMap.put("message","It's a simple app!");
+        stringMap.put("message","It's a simple app!!");
 
         return ResponseEntity.status(HttpStatus.OK).body(stringMap);
     }
