@@ -33,26 +33,9 @@ jobs:
       - name: Build and package
         run: mvn clean package
 
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      - name: Run tests
-        run: mvn test
-
   deploy:
     runs-on: ubuntu-latest
-    needs: test
+    needs: build
 
     steps:
       - name: Deploy to remote server
@@ -66,7 +49,7 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh -o StrictHostKeyChecking=no $USER@$HOST <<EOF
             cd /root/spring-app
-            git pull origin main
+            git pull origin master
             mvn clean package
             nohup java -jar target/*.jar > app.log 2>&1 &
           EOF
