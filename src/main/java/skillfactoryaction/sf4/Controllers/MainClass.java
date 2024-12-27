@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+
+// Метод
 @RestController
 public class MainClass {
     @GetMapping(path = "/")
