@@ -17,7 +17,7 @@ public class MainClass {
     ResponseEntity<Map<String,String>> mainController(){
         Map<String,String> stringMap = new HashMap<>();
         stringMap.put("message","It's a simple app!!");
-// g
+// gм
         return ResponseEntity.status(HttpStatus.OK).body(stringMap);
     }
 
