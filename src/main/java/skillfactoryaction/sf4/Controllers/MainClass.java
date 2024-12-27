@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-// Метод
+// Метод и
 @RestController
 public class MainClass {
     @GetMapping(path = "/")
