@@ -33,9 +33,26 @@ jobs:
       - name: Build and package
         run: mvn clean package
 
-  deploy:
+  test:
     runs-on: ubuntu-latest
     needs: build
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Run tests
+        run: mvn test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
 
     steps:
       - name: Deploy to remote server
